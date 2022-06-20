@@ -1,75 +1,103 @@
 import React from "react";
 import "./Login.scss";
-import "./Login_anim";
-import { useRef } from "react";
 
 const Login = () => {
-  const ref = useRef();
+  const log_login = (e) => {};
 
-  log_login = (e) => {
-    alert(e);
+  const log_cont = (e) => {};
+
+  const sw = () => {
+    const switchers = [...document.querySelectorAll(".switcher")];
+
+    switchers.forEach((item) => {
+      item.addEventListener("click", function () {
+        switchers.forEach((item) =>
+          item.parentElement.classList.remove("is-active")
+        );
+        this.parentElement.classList.add("is-active");
+      });
+    });
   };
-
-  log_cont = (e) => {};
 
   return (
     <div className="login_main">
-      <section class="forms-section">
-        <h1 class="section-title">Passify</h1>
-        <div class="forms">
-          <div class="form-wrapper is-active">
-            <button type="button" class="switcher switcher-login">
+      <section className="forms-section">
+        <h1 className="section-title">Passify</h1>
+        <div className="forms">
+          <div className="form-wrapper is-active">
+            <button type="button" className="switcher switcher-login">
               Login
-              <span class="underline"></span>
+              <span className="underline"></span>
             </button>
-            <form class="form form-login" ref={ref} onSubmit={log_login()}>
+            <form className="form form-login" onSubmit={log_login}>
               <fieldset>
                 <legend>
                   Please, enter your username and password for login.
                 </legend>
-                <div class="input-block">
+                <div className="input-block">
                   <label for="login-email">Username</label>
-                  <input id="login-email" type="text" required />
+                  <input
+                    id="login-email"
+                    type="text"
+                    name="username"
+                    required
+                  />
                 </div>
-                <div class="input-block">
+                <div className="input-block">
                   <label for="login-password">Password</label>
-                  <input id="login-password" type="password" required />
+                  <input
+                    id="login-password"
+                    type="password"
+                    name="password"
+                    required
+                  />
                 </div>
               </fieldset>
-              <button type="submit" class="btn-login">
+              <button type="submit" className="btn-login">
                 Login
               </button>
             </form>
           </div>
-          <div class="form-wrapper">
-            <button type="button" class="switcher switcher-signup">
+          <div className="form-wrapper">
+            <button type="button" className="switcher switcher-signup">
               Sign Up
-              <span class="underline"></span>
+              <span className="underline"></span>
             </button>
-            <form class="form form-signup" ref={ref} onSubmit={log_cont()}>
+            <form className="form form-signup">
               <fieldset>
                 <legend>
                   Please, enter your username, password and password
                   confirmation for sign up.
                 </legend>
-                <div class="input-block">
+                <div className="input-block">
                   <label for="signup-email">Username</label>
-                  <input id="signup-email" type="text" required />
+                  <input
+                    id="signup-email"
+                    type="text"
+                    name="signup-username"
+                    required
+                  />
                 </div>
-                <div class="input-block">
+                <div className="input-block">
                   <label for="signup-password">Password</label>
-                  <input id="signup-password" type="password" required />
+                  <input
+                    id="signup-password"
+                    type="password"
+                    name="password1"
+                    required
+                  />
                 </div>
-                <div class="input-block">
+                <div className="input-block">
                   <label for="signup-password-confirm">Confirm password</label>
                   <input
                     id="signup-password-confirm"
                     type="password"
+                    name="password2"
                     required
                   />
                 </div>
               </fieldset>
-              <button type="submit" class="btn-signup">
+              <button type="submit" className="btn-signup">
                 Continue
               </button>
             </form>
